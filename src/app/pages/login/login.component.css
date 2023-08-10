@@ -1,0 +1,13 @@
+
+.container-login{
+    margin-top: 8%;
+    /* background-color: aqua; */
+    padding: 10px;
+}
+
+.container-matcard{
+    /* background-color: red; */
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+}
