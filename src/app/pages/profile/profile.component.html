@@ -9,7 +9,7 @@
                     alt=""
                     class="profile-image">
 
-                    <h1 class="mt20">Sebastian Velasquez</h1>
+                    <h1 class="mt20">{{user.name}} {{user.lastname}}</h1>
 
                 </div>
                 <div class="row">
@@ -17,23 +17,23 @@
                         <table class="table text-center">
                             <tr>
                                 <td>Nombre de usuario</td>
-                                <td>Sebastian Velasquez</td>
+                                <td>{{user.username}}</td>
                             </tr>
                             <tr>
                                 <td>ID</td>
-                                <td>130002</td>
+                                <td>{{user.id}}</td>
                             </tr>
                             <tr>
                                 <td>Teléfono</td>
-                                <td>903456222</td>
+                                <td>{{user.phone}}</td>
                             </tr>
                             <tr>
                                 <td>Role</td>
-                                <td>Administrador</td>
+                                <td>{{user.authorities[0].authority}}</td>
                             </tr>
                             <tr>
                                 <td>Estado</td>
-                                <td>Activo</td>
+                                <td>{{user.enabled ? "Activo" : "No activo"}}</td>
                             </tr>
                         </table>
                     </div>

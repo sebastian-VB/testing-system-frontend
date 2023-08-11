@@ -12,9 +12,9 @@
 
     <ng-container *ngIf="loginSvc.isLoggedIn()">
         <a  (click)="logout()" class="redirect1" aria-label="Example icon-button with heart icon">Cerrar sesión</a>
-        <span class="container-username">
+        <span class="container-username" style="cursor: pointer;">
             <div class="inLine"></div>
-            <p class="username" >{{username}}</p>
+            <p class="username" routerLink="/admin-dashboard/profile">{{username}}</p>
         </span>
     </ng-container>
 
