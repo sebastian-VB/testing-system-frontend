@@ -8,14 +8,16 @@ import { UserDashboardComponent } from './pages/user/user-dashboard/user-dashboa
 import { AuthGuard } from './services/auth.guard';
 import { NormalGuard } from './services/normal.guard';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent, pathMatch: 'full'},
   {path: 'signup', component: SignupComponent, pathMatch: 'full'},
   {path: 'login', component: LoginComponent, pathMatch: 'full'},
 
-  {path: 'admin-dashboard', component: AdminDashboardComponent, pathMatch: 'full', canActivate: [AuthGuard], children: [
-    {path: 'profile', component: ProfileComponent}
+  {path: 'admin-dashboard', component: AdminDashboardComponent, canActivate: [AuthGuard], children: [
+    {path: '', component: WelcomeComponent},
+    {path: 'profile', component: ProfileComponent},
   ]},
   {path: 'user-dashboard', component: UserDashboardComponent, pathMatch: 'full', canActivate: [NormalGuard]},
 ];
