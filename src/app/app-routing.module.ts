@@ -9,6 +9,8 @@ import { AuthGuard } from './services/auth.guard';
 import { NormalGuard } from './services/normal.guard';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
+import { ViewCategoriesComponent } from './pages/admin/view-categories/view-categories.component';
+import { AddCategoryComponent } from './pages/admin/add-category/add-category.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent, pathMatch: 'full'},
@@ -18,6 +20,8 @@ const routes: Routes = [
   {path: 'admin-dashboard', component: AdminDashboardComponent, canActivate: [AuthGuard], children: [
     {path: '', component: WelcomeComponent},
     {path: 'profile', component: ProfileComponent},
+    {path: 'categories', component: ViewCategoriesComponent},
+    {path: 'add-category', component: AddCategoryComponent},
   ]},
   {path: 'user-dashboard', component: UserDashboardComponent, pathMatch: 'full', canActivate: [NormalGuard]},
 ];

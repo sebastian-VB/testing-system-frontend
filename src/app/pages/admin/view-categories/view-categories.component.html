@@ -1,0 +1,17 @@
+
+<mat-card>
+    <mat-list>
+        <div mat-subheader>Todas la categorias</div>
+        <mat-list-item *ngFor="let category of categories">
+            <mat-icon matListItemIcon>check_circle</mat-icon>
+            <div matListItemTitle>{{category.title}}</div>
+            <div matListItemLine>{{category.description}}</div>
+            <!-- <mat-divider></mat-divider> -->
+        </mat-list-item>
+    </mat-list>
+
+    <div class="container text-center mt20" style="margin-bottom: 20px;">
+        <button mat-raised-button color="primary">Add category</button>
+    </div>
+
+</mat-card>
