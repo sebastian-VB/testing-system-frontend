@@ -15,4 +15,8 @@ export class CategoryService {
     return this.http.get<Catgeory[]>(`${baserURL}/category/`);
   }
 
+  public addCategory(category: Catgeory): Observable<Catgeory>{
+    return this.http.post<Catgeory>(`${baserURL}/category/`, category);
+  }
+
 }

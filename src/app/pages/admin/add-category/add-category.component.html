@@ -1,1 +1,28 @@
-<p>add-category works!</p>
+<mat-card style="padding-top: 30px;">
+    <h1 class="text-center">Agregar nueva categoría</h1>
+    <mat-card-content>
+        <div class="bootstrap-wrapper">
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <form (ngSubmit)="formSubmit()">
+
+                        <mat-form-field class="w100" appearance="outline">
+                            <mat-label>Título</mat-label>
+                            <input required autofocus matInput name="title" type="text" placeholder="Digite la categpría" [(ngModel)]="category.title">
+                        </mat-form-field>
+
+                        <mat-form-field class="w100" appearance="outline">
+                            <mat-label>Descripción</mat-label>
+                            <textarea name="description" matInput placeholder="Digite la descripción" rows="15" [(ngModel)]="category.description"></textarea>
+                        </mat-form-field>
+
+                        <div class="conatiner text-center mt15">
+                            <button mat-raised-button color="primary">Guardar</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>
