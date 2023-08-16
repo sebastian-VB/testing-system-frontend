@@ -1,1 +1,20 @@
-<p>view-exams works!</p>
+<mat-card class="mt10" *ngFor="let exam of exams">
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{exam.title}}</mat-card-title>
+        <mat-card-subtitle>{{exam.category.title}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-card-actions>
+            <button mat-flat-button color="primary">Preguntas</button>
+            <button mat-stroked-button color="primary" class="ml20">Puntos máximos {{exam.maxPoints}}</button>
+            <button mat-stroked-button color="primary" class="ml20">Preguntas {{exam.questionNumber}}</button>
+            <button mat-flat-button color="primary" class="ml20">Actualizar</button>
+            <button mat-flat-button color="primary" class="ml20">Intentos</button>
+        </mat-card-actions>
+    </mat-card-content>
+</mat-card>
+
+<div class="conatiner text-center mt20">
+    <button mat-raised-button color="primary">Agregar cuestionario</button>
+</div>
