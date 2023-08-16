@@ -1,0 +1,35 @@
+<mat-card>
+    <h1>Agregar nuevo examen</h1>
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <form>
+
+                <mat-form-field class="w100" appearance="fill">
+                    <mat-label>Título</mat-label>
+                    <input type="text" name="title" placeholder="Digite el título" matInput>
+                </mat-form-field>
+                
+                <mat-form-field class="w100" appearance="fill">
+                    <mat-label>Descripción</mat-label>
+                    <textarea name="description" rows="8" placeholder="Digite la descripción" matInput></textarea>
+                </mat-form-field>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <mat-form-field class="w100" appearance="fill">
+                            <mat-label>Puntos máximos</mat-label>
+                            <input type="text" name="maxPoints" placeholder="Digite la cantidad de puntos" matInput>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                        <mat-form-field class="w100" appearance="fill">
+                            <mat-label>Número de preguntas</mat-label>
+                            <input type="text" name="questionNumber" placeholder="Digite el número de preguntas" matInput>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</mat-card>
