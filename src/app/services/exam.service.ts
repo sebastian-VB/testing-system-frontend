@@ -23,4 +23,12 @@ export class ExamService {
     return this.http.delete(`${baserURL}/exam/${examId}`);
   }
 
+  public getExam(examId: number): Observable<Exam>{
+    return this.http.get<Exam>(`${baserURL}/exam/${examId}`);
+  }
+
+  public updateExam(exam: ExamPost): Observable<Exam>{
+    return this.http.put<Exam>(`${baserURL}/exam/`, exam);
+  }
+
 }
