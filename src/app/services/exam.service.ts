@@ -19,4 +19,8 @@ export class ExamService {
     return this.http.post<Exam>(`${baserURL}/exam/`, exam);
   }
 
+  public deleteExam(examId: number){
+    return this.http.delete(`${baserURL}/exam/${examId}`);
+  }
+
 }

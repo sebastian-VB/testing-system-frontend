@@ -11,6 +11,7 @@
             <button mat-stroked-button color="primary" class="ml20">Preguntas {{exam.questionNumber}}</button>
             <button mat-flat-button color="primary" class="ml20">Actualizar</button>
             <button mat-flat-button color="primary" class="ml20">Intentos</button>
+            <button  mat-raised-button color="warn" class="ml10" (click)="deleteExam(exam.id)">Eliminar cuestionario</button>
         </mat-card-actions>
     </mat-card-content>
 </mat-card>
