@@ -6,7 +6,7 @@
     </mat-card-header>
     <mat-card-content>
         <mat-card-actions>
-            <button mat-flat-button color="primary">Preguntas</button>
+            <button mat-flat-button color="primary" [routerLink]="'/admin-dashboard/view-question/'+ exam.id+ '/'+ exam.title">Preguntas</button>
             <button mat-stroked-button color="primary" class="ml20">Puntos máximos {{exam.maxPoints}}</button>
             <button mat-stroked-button color="primary" class="ml20">Preguntas {{exam.questionNumber}}</button>
             <button mat-flat-button color="primary" class="ml20" [routerLink]="'/admin-dashboard/exam/'+ exam.id">Actualizar</button>
