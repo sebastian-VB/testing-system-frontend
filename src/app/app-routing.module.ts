@@ -31,7 +31,7 @@ const routes: Routes = [
     {path: 'add-exam', component: AddExamComponent},
     {path: 'exam/:examId', component: UpdateExamComponent},
     {path: 'view-question/:examId/:title', component: ViewExamQuestionComponent},
-    {path: 'add-question/:examId', component: AddQuestionComponent},
+    {path: 'add-question/:examId/:title', component: AddQuestionComponent},
   ]},
   {path: 'user-dashboard', component: UserDashboardComponent, pathMatch: 'full', canActivate: [NormalGuard]},
 ];

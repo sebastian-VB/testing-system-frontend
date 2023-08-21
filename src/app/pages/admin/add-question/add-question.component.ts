@@ -10,6 +10,7 @@ import { QuestionPost } from 'src/app/models/question';
 export class AddQuestionComponent implements OnInit {
 
   examId: number;
+  title: string;
   questionData: QuestionPost;
 
   constructor(private route: ActivatedRoute){}
@@ -17,6 +18,7 @@ export class AddQuestionComponent implements OnInit {
   ngOnInit(): void {
     this.initialValues();
     this.examId = this.route.snapshot.params['examId'];
+    this.title = this.route.snapshot.params['title'];
     this.questionData.exam['id'] = this.examId;
   }
 
