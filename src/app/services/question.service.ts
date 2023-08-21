@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Question } from '../models/question';
+import { Question, QuestionPost } from '../models/question';
 import baserURL from './helper';
 
 @Injectable({
@@ -13,5 +13,9 @@ export class QuestionService {
 
   listExamQuestion(examId: number): Observable<Question[]>{
     return this.http.get<Question[]>(`${baserURL}/question/exam/all/${examId}`);
+  }
+
+  saveQuestion(question: QuestionPost): Observable<Question>{
+    return this.http.post<Question>(`${baserURL}/question/`, question);
   }
 }
