@@ -18,4 +18,8 @@ export class QuestionService {
   saveQuestion(question: QuestionPost): Observable<Question>{
     return this.http.post<Question>(`${baserURL}/question/`, question);
   }
+
+  deleteQuestion(questionId: number){
+    return this.http.delete(`${baserURL}/question/${questionId}`);
+  }
 }
