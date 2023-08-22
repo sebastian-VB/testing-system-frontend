@@ -22,4 +22,13 @@ export class QuestionService {
   deleteQuestion(questionId: number){
     return this.http.delete(`${baserURL}/question/${questionId}`);
   }
+
+  updateQuestion(question: QuestionPost): Observable<Question>{
+    return this.http.put<Question>(`${baserURL}/question/`, question);
+  }
+
+  getOnlyQuestion(questionId: number): Observable<Question>{
+    return this.http.get<Question>(`${baserURL}/question/${questionId}`);
+  }
+
 }
