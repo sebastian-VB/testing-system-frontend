@@ -17,6 +17,7 @@ import { UpdateExamComponent } from './pages/admin/update-exam/update-exam.compo
 import { ViewExamQuestionComponent } from './pages/admin/view-exam-question/view-exam-question.component';
 import { AddQuestionComponent } from './pages/admin/add-question/add-question.component';
 import { UpdateQuestionComponent } from './pages/admin/update-question/update-question.component';
+import { LoadExamUserComponent } from './pages/user/load-exam-user/load-exam-user.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent, pathMatch: 'full'},
@@ -35,7 +36,9 @@ const routes: Routes = [
     {path: 'add-question/:examId/:title', component: AddQuestionComponent},
     {path: 'question/:questionId', component: UpdateQuestionComponent},
   ]},
-  {path: 'user-dashboard', component: UserDashboardComponent, pathMatch: 'full', canActivate: [NormalGuard]},
+  {path: 'user-dashboard', component: UserDashboardComponent, canActivate: [NormalGuard], children: [
+    {path: ':categoryId', component: LoadExamUserComponent}
+  ]},
 ];
 
 @NgModule({

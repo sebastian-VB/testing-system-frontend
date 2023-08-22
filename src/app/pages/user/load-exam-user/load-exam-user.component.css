@@ -1,0 +1,8 @@
+.example-header-image{
+    background-image: url('../../../../assets/img/prueba.png');
+    background-size: cover;
+}
+
+.mb20{
+    margin-bottom: 20px;
+}
