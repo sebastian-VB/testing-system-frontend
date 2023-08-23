@@ -31,4 +31,8 @@ export class ExamService {
     return this.http.put<Exam>(`${baserURL}/exam/`, exam);
   }
 
+  public listExamByCategory(categoryId: number): Observable<Exam[]>{
+    return this.http.get<Exam[]>(`${baserURL}/exam/category/${categoryId}`);
+  }
+
 }

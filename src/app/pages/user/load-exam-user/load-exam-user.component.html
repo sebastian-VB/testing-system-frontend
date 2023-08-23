@@ -24,6 +24,13 @@
                     </mat-card-actions>
                 </mat-card>
             </div>
+            <div class="col-md-12" *ngIf="exams.length == 0">
+                <mat-card>
+                    <mat-card-content>
+                        <h1>No hay exámenes con esta categoría</h1>
+                    </mat-card-content>
+                </mat-card>
+            </div>
         </div>
     </div>
 </div>
