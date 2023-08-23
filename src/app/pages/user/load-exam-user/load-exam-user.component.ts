@@ -25,7 +25,7 @@ export class LoadExamUserComponent implements OnInit{
       
       if(this.categoryId == 0){
         console.log('Cargando todos los exámenes');
-        this.examSvc.listExams().subscribe(
+        this.examSvc.getExamActive().subscribe(
           (data: Exam[]) =>{
             this.exams = data;
             console.log(this.exams);
@@ -37,7 +37,7 @@ export class LoadExamUserComponent implements OnInit{
       }
       else{
         console.log('Cargando un examen en especifico');
-        this.examSvc.listExamByCategory(this.categoryId).subscribe(
+        this.examSvc.getExamActiveForOnlyCategory(this.categoryId).subscribe(
           (data: Exam[]) =>{
             this.exams= data;
             console.log(this.exams);

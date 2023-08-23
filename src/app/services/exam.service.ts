@@ -35,4 +35,12 @@ export class ExamService {
     return this.http.get<Exam[]>(`${baserURL}/exam/category/${categoryId}`);
   }
 
+  public getExamActive(): Observable<Exam[]>{
+    return this.http.get<Exam[]>(`${baserURL}/exam/active`);
+  }
+
+  public getExamActiveForOnlyCategory(categoryId: number): Observable<Exam[]>{
+    return this.http.get<Exam[]>(`${baserURL}/exam/category/active/${categoryId}`);
+  }
+
 }
