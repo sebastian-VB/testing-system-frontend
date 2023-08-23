@@ -1,0 +1,40 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <mat-card class="mt20 pl30">
+                    <mat-card-header>
+                        <mat-card-title>
+                            Lea las instrucciones de esta página cuidadosamente
+                        </mat-card-title>
+                    </mat-card-header>
+                    <mat-card-subtitle class="ml15">Un paso más para ir</mat-card-subtitle>
+                    <mat-card-content >
+                        <h1>{{exam.title}}</h1>
+                        <p>{{exam.description}}</p>
+                        <mat-divider></mat-divider>
+                    </mat-card-content>
+                    <br>
+                    <h1 class="ml15">Instrucciones importantes</h1>
+                    <ul>
+                        <li>Este cuestionario es solo para fines de practica</li>
+                        <li>Tines que enviar el cuestionario en <b>{{(+exam.questionNumber) * 2}}</b> minutos</li>
+                        <li>Puede intentar el cuestionario n veces</li>
+                        <li>Hay <b>{{(+exam.maxPoints) / (+exam.questionNumber)}}</b> puntos por pregunta</li>
+                    </ul>
+                    <mat-divider></mat-divider>
+                    <br>
+                    <h1 class="ml15">Intentos de la pruba</h1>
+                    <ul>
+                        <li>Presione el boton <b>Empezar</b> para iniciar el examen</li>
+                        <li>El tiempo comenzará en el momento en que haga clic en el botón de inicio</li>
+                        <li>No puede reanudar este cuestionario si se interrumpe por algún motivo</li>
+                        <li>Desplácese hacia abajo para pasar a la siguiente pregunta</li>
+                        <li>Haga clic en el botón enviar cuestionario al finalizar el cuestionario</li>
+                        <li>El informe de la prueba se genera automáticamente en forma de copia PDF</li>
+                    </ul>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
