@@ -31,4 +31,8 @@ export class QuestionService {
     return this.http.get<Question>(`${baserURL}/question/${questionId}`);
   }
 
+  listQuestionByExam(examId: number): Observable<Question[]>{
+    return this.http.get<Question[]>(`${baserURL}/question/exam/${examId}`);
+  }
+
 }

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Exam } from 'src/app/models/exam';
 import { ExamService } from 'src/app/services/exam.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-instructions',
@@ -13,10 +14,10 @@ export class InstructionsComponent implements OnInit{
   examId: number;
   exam: Exam;
 
-  constructor(private router: ActivatedRoute, private examSvc: ExamService){}
+  constructor(private route: ActivatedRoute, private examSvc: ExamService, private router: Router){}
   
   ngOnInit(): void {
-    this.examId = this.router.snapshot.params['examId'];
+    this.examId = this.route.snapshot.params['examId'];
     this.examSvc.getExam(this.examId).subscribe(
       (data: Exam) =>{
         this.exam = data;
@@ -26,6 +27,20 @@ export class InstructionsComponent implements OnInit{
         console.log(error);
       }
     );
+  }
+
+  startExam(){
+    Swal.fire({
+      title: '¿Quieres comenzar el examen?',
+      showCancelButton: true,
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Empezar',
+      icon: 'info'
+    }).then((result) =>{
+      if(result.isConfirmed){
+        this.router.navigate([`/start/${this.examId}`]);
+      }
+    });
   }
 
 }

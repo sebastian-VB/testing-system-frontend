@@ -19,6 +19,7 @@ import { AddQuestionComponent } from './pages/admin/add-question/add-question.co
 import { UpdateQuestionComponent } from './pages/admin/update-question/update-question.component';
 import { LoadExamUserComponent } from './pages/user/load-exam-user/load-exam-user.component';
 import { InstructionsComponent } from './pages/user/instructions/instructions.component';
+import { StartExamsComponent } from './pages/user/start-exams/start-exams.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent, pathMatch: 'full'},
@@ -41,6 +42,7 @@ const routes: Routes = [
     {path: ':categoryId', component: LoadExamUserComponent},
     {path: 'instructions/:examId', component: InstructionsComponent}
   ]},
+  {path: 'start/:examId', component: StartExamsComponent, canActivate: [NormalGuard]}
 ];
 
 @NgModule({

@@ -5,3 +5,8 @@
 .ml15{
     margin-left: 15px;
 }
+
+.btn-start-test{
+    display: flex;
+    justify-content: center;
+}

@@ -39,6 +39,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background:
     margin-bottom: 20px;
 }
 
+.mb10{
+    margin-bottom: 10px;
+}
+
 .w100{
     width: 100%;
 }
