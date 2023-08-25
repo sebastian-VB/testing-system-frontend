@@ -9,6 +9,7 @@ export class Question{
     option2: string;
     option3: string;
     option4: string;
+    givenAnswer: string;
     answer: string;
     exam: Exam;
 }
