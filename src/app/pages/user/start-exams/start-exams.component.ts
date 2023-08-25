@@ -17,6 +17,8 @@ export class StartExamsComponent implements OnInit{
   pointsAchieved: number = 0;
   correctQuestions: number = 0;
   attempts: number = 0;
+  isSent: boolean = false;
+  timer: number;
 
   constructor(private locationSt: LocationStrategy, private questionSvc: QuestionService, private route: ActivatedRoute){}
   
@@ -30,7 +32,10 @@ export class StartExamsComponent implements OnInit{
     this.questionSvc.listQuestionByExam(this.examId).subscribe(
       (data: Question[]) =>{
         this.questions = data;
-        //console.log(this.questions);
+
+        this.timer = this.questions.length * 2 * 60;
+
+        this.startTimer();
       }, 
       (error) =>{
         console.log(error);
@@ -48,19 +53,45 @@ export class StartExamsComponent implements OnInit{
       icon: 'info'
     }).then((result) => {
       if(result.isConfirmed){
-        this.questions.forEach((q: Question) =>{
-          if(q.givenAnswer == q.answer){
-            this.correctQuestions ++;
-            let pointByQuestion = (+q.exam.maxPoints) / (+q.exam.questionNumber);
-            this.pointsAchieved += pointByQuestion;
-          }
-        });
-
-        console.log('Respuestas correctas: ' + this.correctQuestions);
-        console.log('Puntos conseguidos: ' + this.pointsAchieved);
-        console.log(this.questions);
+        this.evaluateTest();
       }
     });
+  }
+
+  evaluateTest(){
+    this.isSent = true;
+    this.questions.forEach((q: Question) =>{
+      
+      if(q.givenAnswer == q.answer){
+        this.correctQuestions ++;
+        let pointByQuestion = (+q.exam.maxPoints) / (+q.exam.questionNumber);
+        this.pointsAchieved += pointByQuestion;
+      }
+
+      if(q.givenAnswer.trim() !== '') this.attempts ++;
+
+    });
+    console.log('Respuestas correctas: ' + this.correctQuestions);
+    console.log('Puntos conseguidos: ' + this.pointsAchieved);
+    console.log(this.questions);
+  }
+
+  startTimer(){
+    let t = window.setInterval(()=> {
+      if(this.timer <= 0){
+        this.evaluateTest();
+        clearInterval(t);
+      }
+      else{
+        this.timer --;
+      }
+    }, 1000);
+  }
+
+  getFormatterTime(): string{
+    let mm = Math.floor(this.timer/60);
+    let ss = this.timer - mm * 60;
+    return `${mm} : min : ${ss} : seg`;
   }
 
   preventBackButton(): void{
