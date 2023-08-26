@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Question, QuestionPost } from '../models/question';
 import baserURL from './helper';
+import { Answers } from '../models/answers';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +34,10 @@ export class QuestionService {
 
   listQuestionByExam(examId: number): Observable<Question[]>{
     return this.http.get<Question[]>(`${baserURL}/question/exam/${examId}`);
+  }
+
+  evaluateExam(questions: Question[]): Observable<Answers>{
+    return this.http.post<Answers>(`${baserURL}/question/evaluate-exam`, questions);
   }
 
 }

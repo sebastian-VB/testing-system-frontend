@@ -1,6 +1,7 @@
 import { LocationStrategy } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Answers } from 'src/app/models/answers';
 import { Question } from 'src/app/models/question';
 import { QuestionService } from 'src/app/services/question.service';
 import Swal from 'sweetalert2';
@@ -59,21 +60,35 @@ export class StartExamsComponent implements OnInit{
   }
 
   evaluateTest(){
-    this.isSent = true;
-    this.questions.forEach((q: Question) =>{
-      
-      if(q.givenAnswer == q.answer){
-        this.correctQuestions ++;
-        let pointByQuestion = (+q.exam.maxPoints) / (+q.exam.questionNumber);
-        this.pointsAchieved += pointByQuestion;
+
+    this.questionSvc.evaluateExam(this.questions).subscribe(
+      (data: Answers) =>{
+        this.correctQuestions = data.correctQuestion;
+        this.pointsAchieved = data.maxPoints;
+        this.attempts = data.attempts;
+        this.isSent = true;
+        this.timer = 0;
+      },
+      (error) =>{
+        console.log(error);
       }
+    );
 
-      if(q.givenAnswer.trim() !== '') this.attempts ++;
+    // this.isSent = true;
+    // this.questions.forEach((q: Question) =>{
+      
+    //   if(q.givenAnswer == q.answer){
+    //     this.correctQuestions ++;
+    //     let pointByQuestion = (+q.exam.maxPoints) / (+q.exam.questionNumber);
+    //     this.pointsAchieved += pointByQuestion;
+    //   }
 
-    });
-    console.log('Respuestas correctas: ' + this.correctQuestions);
-    console.log('Puntos conseguidos: ' + this.pointsAchieved);
-    console.log(this.questions);
+    //   if(q.givenAnswer.trim() !== '') this.attempts ++;
+
+    // });
+    // console.log('Respuestas correctas: ' + this.correctQuestions);
+    // console.log('Puntos conseguidos: ' + this.pointsAchieved);
+    // console.log(this.questions);
   }
 
   startTimer(){
@@ -83,7 +98,7 @@ export class StartExamsComponent implements OnInit{
         clearInterval(t);
       }
       else{
-        this.timer --;
+        if(!this.isSent) this.timer --;
       }
     }, 1000);
   }
@@ -92,6 +107,10 @@ export class StartExamsComponent implements OnInit{
     let mm = Math.floor(this.timer/60);
     let ss = this.timer - mm * 60;
     return `${mm} : min : ${ss} : seg`;
+  }
+
+  printPage(){
+    window.print();
   }
 
   preventBackButton(): void{
