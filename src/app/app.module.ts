@@ -44,6 +44,7 @@ import { SidebarComponent as UserSidebarComponent } from './pages/user/sidebar/s
 import { LoadExamUserComponent } from './pages/user/load-exam-user/load-exam-user.component';
 import { InstructionsComponent } from './pages/user/instructions/instructions.component';
 import { StartExamsComponent } from './pages/user/start-exams/start-exams.component';
+import { NgxUiLoaderModule, NgxUiLoaderHttpModule } from 'ngx-ui-loader';
 
 @NgModule({
   declarations: [
@@ -88,7 +89,11 @@ import { StartExamsComponent } from './pages/user/start-exams/start-exams.compon
     MatDividerModule,
     MatSlideToggleModule,
     MatSelectModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    NgxUiLoaderModule,
+    NgxUiLoaderHttpModule.forRoot({
+      showForeground: true
+    })
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
